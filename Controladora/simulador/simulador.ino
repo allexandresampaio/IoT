@@ -11,16 +11,15 @@ ADXL345 acel = ADXL345();
 
 //Define os pinos dos sensores
 #define P_UMIDADE 0
-#define P_TEMPERATURA 1
-#define P_PRESENCA 3
+#define P_CHUVA 1  //
+#define P_VIBRACAO 3
 
 #define RFID 10
 
 //Define os valores que serao usados no deslocamento
-#define DESLOC_RFID 18
-#define DESLOC_PRESENCA 17
+#define DESLOC_RFID 17
 #define DESLOC_VIBRACAO 16
-#define DESLOC_TEMPERATURA 8
+#define DESLOC_UMIDADE 8
 
 void setup() {
   Serial.begin(9600);
@@ -53,14 +52,10 @@ void setup() {
 
 long lerSensoresRF(){
   long rf = RFID;
-  long presenca = digitalRead(P_PRESENCA);
-  long umidade = analogRead(P_UMIDADE);
-  long temperatura = analogRead(P_TEMPERATURA);
+  long chuva = digitalRead(P_CHUVA);
+  long umidade = digitalRead(P_UMIDADE);
+  long vibracao = digitalRead(P_VIBRACAO);
   
-  //Mapeamento do potenciometro
-  umidade = map(umidade, 0, 1023, 0, 100);
-  temperatura = map(temperatura, 0, 1023, 0, 50);
-
   //Para presenca o valor zero significa inatividade
   long vibracao = 0;
   
@@ -71,11 +66,10 @@ long lerSensoresRF(){
     vibracao = 1;
   }
 
-  long info = rf << DESLOC_RFID;//18
-  info = info | (presenca << DESLOC_PRESENCA);//17
+  long info = rf << DESLOC_RFID;//17
   info = info | (vibracao << DESLOC_VIBRACAO);///16
-  info = info | (temperatura << DESLOC_TEMPERATURA);//8
-  info = info | umidade;
+  info = info | (temperatura << DESLOC_UMIDADE);//8
+  info = info | chuva;
   return info;
 }
 
