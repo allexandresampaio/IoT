@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Daemon Name: winekeeperd
+# Daemon Name: MINDE
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
-DPATH=/home/allexandre/workspace/RepositorioGitHub/SisEmbarcados-AllexandreEItalo/III_Unidade/Cpp/winekeeperd/Release/
+DPATH=/home/allexandre/workspace/RepositorioGitHub/IoT/Cpp/Release/
 DESC="Daemon de leitura dos sensores para WOT"
-NAME=winekeeperd
+NAME=MINDE
 DAEMON=$DPATH/$NAME
 DAEMON_ARGS=$DPATH
 PIDFILE=/var/run/$NAME.pid
