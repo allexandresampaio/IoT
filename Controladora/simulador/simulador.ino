@@ -54,8 +54,7 @@ long lerSensoresRF(){
   long rf = RFID;
   long chuva = digitalRead(P_CHUVA);
   long umidade = digitalRead(P_UMIDADE);
-  long vibracao = digitalRead(P_VIBRACAO);
-  
+    
   //Para presenca o valor zero significa inatividade
   long vibracao = 0;
   
@@ -68,13 +67,14 @@ long lerSensoresRF(){
 
   long info = rf << DESLOC_RFID;//17
   info = info | (vibracao << DESLOC_VIBRACAO);///16
-  info = info | (temperatura << DESLOC_UMIDADE);//8
+  info = info | (umidade << DESLOC_UMIDADE);//8
   info = info | chuva;
   return info;
 }
 
 void emitir(long info){
   emissor.send(info, 32);
+  
 }
 
 long receber(){
@@ -87,11 +87,13 @@ long receber(){
 }
 
 void loop() {
-  // emissao de dados
-  emitir(lerSensoresRF());
+// emissao de dados
+//  emitir(simularSensoresRF()); //trocar por lerSensoresRF
   
-  //recepcao de dados
-  long info = receber();
+//recepcao de dados
+//  long info = receber();
+
+long info = simularSensoresRF();
   if(info != -1){
     if (extrairRFID(info) == 10){
       enviarParaUSB(info);//envia o long criado.
@@ -110,4 +112,19 @@ void enviarParaUSB(long info){
   char buff[sizeof(info)]={0};
   memcpy(&buff, &info, sizeof(info));
   Serial.write((uint8_t*) buff, sizeof(info));
+}
+
+//SIMULADOR
+
+long simularSensoresRF(){
+  long rf = 12;
+  long chuva = 34;       //porcentagem
+  long umidade = 56;    //porcentagem
+  long vibracao = 1;   //o valor 1 significa que está ocorrendo vibracao
+  
+  long info = rf << DESLOC_RFID;//17
+  info = info | (vibracao << DESLOC_VIBRACAO);///16
+  info = info | (umidade << DESLOC_UMIDADE);//8
+  info = info | chuva;
+  return info;
 }
