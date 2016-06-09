@@ -23,8 +23,8 @@
 
 using namespace std;
 
-#define ARQUIVO_LOG "/home/allexandre/arquivos_initd/winekeeper.log"
-#define ARQUIVO_PIPE "/home/allexandre/arquivos_initd/winekeeper_p"
+#define ARQUIVO_LOG "/home/allexandre/arquivos_initd/minde.log"
+#define ARQUIVO_PIPE "/home/allexandre/arquivos_initd/minde_p"
 
 bool continuar = true;
 int sensores = 0;
@@ -155,7 +155,6 @@ void IniciarConexao(){
 				fcntl(hPorta, F_SETFL, 0);
 				resultado = EXIT_SUCCESS;
 			}
-
 }
 
 //------------------------------------------ MAIN ------------------------------------------------------
