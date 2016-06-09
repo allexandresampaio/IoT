@@ -105,7 +105,7 @@ public class LeitorSensoriamento implements Runnable {
 	
 	
 	// acesso a arquivo PIPE de sensoriamento
-	private static final String ARQUIVO_PIPE = "/home/allexandre/arquivos_initd/minde_p";
+	private static final String ARQUIVO_PIPE = "/home/allexandre/arquivos_initd/winekeeper_p";
 	private RandomAccessFile fifo = null;
 
 	private boolean continuar = true;
@@ -129,7 +129,7 @@ public class LeitorSensoriamento implements Runnable {
 						sensores = Integer.parseInt(s);
 					}
 
-//					Thread.sleep(1000);
+					Thread.sleep(1000);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();

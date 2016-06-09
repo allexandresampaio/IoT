@@ -1,1 +1,7 @@
 1465507661537	Rename package 'br.edu.ifba.embarcados.winekeeper'
+1465508342644	Rename field 'DESLOCAMENTO_TEMPERATURA'
+1465508426915	Rename method 'getTemperatura'
+1465508472793	Rename local variable 'umi'
+1465508479335	Rename local variable 'temp'
+1465508574068	Rename local variable 'temperatura'
+1465508967104	Rename method 'getTemperatura'

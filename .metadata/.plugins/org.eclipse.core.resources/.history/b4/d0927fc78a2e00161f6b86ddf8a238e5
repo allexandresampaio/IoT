@@ -25,6 +25,13 @@ public class Servico {
 	}
 
 	@GET
+	@Path("/sensores/presenca")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getPresenca() {
+		return LeitorSensoriamento.getPresenca() + "";
+	}
+
+	@GET
 	@Path("/sensores/vibracao")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getVibracao() {
@@ -32,13 +39,11 @@ public class Servico {
 	}
 
 	@GET
-	@Path("/sensores/chuva")
+	@Path("/sensores/temperatura")
 	@Produces(MediaType.TEXT_PLAIN)
-	public String getChuva() {
-		return LeitorSensoriamento.getStatusChuva() + "";
-	}
-	
-	@GET
+	public String getTemperatura() {
+		return LeitorSensoriamento.getTemperatura() + "";
+	}@GET
 	@Path("/sensores/umidade")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getUmidade() {

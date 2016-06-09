@@ -129,7 +129,7 @@ public class LeitorSensoriamento implements Runnable {
 						sensores = Integer.parseInt(s);
 					}
 
-//					Thread.sleep(1000);
+					Thread.sleep(1000);
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
