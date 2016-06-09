@@ -1,0 +1,7 @@
+INDEX VERSION 1.3+/home/allexandre/workspace/RepositorioGitHub/IoT/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+871893308.index
+276447366.index
+3670565953.index
+556583624.index
+3766608497.index
+145528200.index

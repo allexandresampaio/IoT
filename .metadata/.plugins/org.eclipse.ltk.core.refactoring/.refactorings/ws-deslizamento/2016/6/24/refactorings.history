@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;br.edu.ifba.embarcados.winekeeper&apos; to &apos;br.edu.ifba.iot.minde&apos;&#x0A;- Original project: &apos;ws-deslizamento&apos;&#x0A;- Original element: &apos;ws-deslizamento/src/br.edu.ifba.embarcados.winekeeper&apos;&#x0A;- Renamed element: &apos;ws-deslizamento/src/br.edu.ifba.iot.minde&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings&#x0A;- Rename subpackages of the package" description="Rename package &apos;br.edu.ifba.embarcados.winekeeper&apos;" flags="589830" hierarchical="true" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;br.edu.ifba.embarcados.winekeeper" name="br.edu.ifba.iot.minde" qualified="false" references="true" stamp="1465507661537" textual="false" version="1.0"/>
+</session>
