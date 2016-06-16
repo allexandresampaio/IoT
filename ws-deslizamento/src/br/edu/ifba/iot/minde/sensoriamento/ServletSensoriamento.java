@@ -31,7 +31,6 @@ public class ServletSensoriamento extends ServletContainer {
 		try {
 			executorLeituras.join();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

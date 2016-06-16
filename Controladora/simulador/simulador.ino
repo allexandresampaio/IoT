@@ -74,7 +74,6 @@ long lerSensoresRF(){
 
 void emitir(long info){
   emissor.send(info, 32);
-  
 }
 
 long receber(){
@@ -100,7 +99,7 @@ long info = simularSensoresRF();
     }
   }
   //Delay de 3 segundos para sincronizar com o sensor de presenca
-  delay(3000);
+  delay(1000);
 }
 
 int extrairRFID(long info){
@@ -117,7 +116,7 @@ void enviarParaUSB(long info){
 //SIMULADOR
 
 long simularSensoresRF(){
-  long rf = 12;
+  long rf = 10;
   long chuva = 34;       //porcentagem
   long umidade = 56;    //porcentagem
   long vibracao = 1;   //o valor 1 significa que está ocorrendo vibracao

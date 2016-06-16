@@ -76,29 +76,27 @@ public class LeitorSensoriamento implements Runnable {
 	}
 
 	public static String getStatusChuva(){
-		String status = "";
+		String status = "Chuva em: ";
 		int chuva = getChuva();
-		
+		status += chuva + "%.";
 //		if ((chuva > 4) & (chuva < 20)){
 //			status = "Temperatura dentro dos padroes recomendados.";
 //		}else{
 //			status = "Temperatura fora dos padroes recomendados! Ajuste.";
 //		}
-//		
-//		return status;
 		
-		return chuva+status;
+		return status;
 	}
 	
 	public static String getStatusUmidade(){
-		String status = "";
+		String status = "Umidade do solo em: ";
 		int umidade = getUmidade();
-		
-		if (umidade < 65){
-			status = "Umidade dentro dos padroes recomendados.";
-		}else{
-			status = "Umidade fora dos padroes recomendados! Ajuste.";
-		}
+		status += umidade + "%.";
+//		if (umidade < 65){
+//			status = "Umidade dentro dos padroes recomendados.";
+//		}else{
+//			status = "Umidade fora dos padroes recomendados! Ajuste.";
+//		}
 		
 		return status;
 	}
@@ -145,5 +143,4 @@ public class LeitorSensoriamento implements Runnable {
 	public void parar() {
 		continuar = false;
 	}
-	
 }

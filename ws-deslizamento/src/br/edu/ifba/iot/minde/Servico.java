@@ -51,6 +51,4 @@ public class Servico {
 	public String getStatus() {
 		return LeitorSensoriamento.getStatus() + "";
 	}
-	
-	
 }
