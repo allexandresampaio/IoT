@@ -11,22 +11,17 @@ ADXL345 acel = ADXL345();
 
 //Define os pinos dos sensores
 #define P_UMIDADE 0
-#define P_CHUVA 1  //
-#define P_VIBRACAO 3
+#define P_A_CHUVA 2  
+#define P_D_CHUVA 1
 
 #define RFID 10
 
 //Define os valores que serao usados no deslocamento
-#define DESLOC_RFID 17
 #define DESLOC_VIBRACAO 16
 #define DESLOC_UMIDADE 8
 
 void setup() {
-  Serial.begin(9600);
-  //Configuracao do emissor/Receptor RF
-  emissor.enableTransmit(4);
-  receptor.enableReceive(0);//Pega o primeiro pino de interrupcao
-
+  
   //Configuracao do acelerometro para deteccao de vibracao
   acel.powerOn();
   //Define INATIVIDADE (repouso)
@@ -48,12 +43,19 @@ void setup() {
   acel.setActivityThreshold(50);
   acel.setInactivityThreshold(50);
   acel.setTimeInactivity(10);
+
+  //Configurando sensor de chuva
+  pinMode(P_D_CHUVA, INPUT);
+  pinMode(P_A_CHUVA, INPUT);
+
+  //velocidade de leitura na porta serial
+  Serial.begin(9600);
 }
 
-long lerSensoresRF(){
-  long rf = RFID;
-  long chuva = digitalRead(P_CHUVA);
-  long umidade = digitalRead(P_UMIDADE);
+long lerSensores(){
+  long chuvaDigital = digitalRead(P_D_CHUVA);
+  long chuvaAnalogico = analogRead(P_A_CHUVA);
+  long umidade = analogRead(P_UMIDADE);
     
   //Para presenca o valor zero significa inatividade
   long vibracao = 0;
@@ -64,47 +66,28 @@ long lerSensoresRF(){
   if(acel.triggered(interruptAcel, ADXL345_INT_ACTIVITY_BIT)){
     vibracao = 1;
   }
-
-  long info = rf << DESLOC_RFID;//17
-  info = info | (vibracao << DESLOC_VIBRACAO);///16
+delay(1000);
+Serial.println(" ");
+Serial.print("chuva = ");
+Serial.println(chuvaAnalogico);
+Serial.print("umidade = ");
+Serial.println(umidade);
+Serial.print("vibracao = ");
+Serial.print(vibracao);
+  
+  /*
+  long info = (vibracao << DESLOC_VIBRACAO);///16
   info = info | (umidade << DESLOC_UMIDADE);//8
-  info = info | chuva;
-  return info;
-}
-
-void emitir(long info){
-  emissor.send(info, 32);
-}
-
-long receber(){
-  long info = -1;
-  if(receptor.available()){ //se ha dados disponiveis
-    info = receptor.getReceivedValue();
-    receptor.resetAvailable(); //zera o receptor
-  }
-  return info;
+  info = info | chuvaAnalogico;
+  return info;*/
 }
 
 void loop() {
-// emissao de dados
-//  emitir(simularSensoresRF()); //trocar por lerSensoresRF
-  
-//recepcao de dados
-//  long info = receber();
 
-long info = simularSensoresRF();
-  if(info != -1){
-    if (extrairRFID(info) == 10){
-      enviarParaUSB(info);//envia o long criado.
-    }
-  }
-  //Delay de 3 segundos para sincronizar com o sensor de presenca
-  delay(1000);
-}
-
-int extrairRFID(long info){
-  int rf = info >> DESLOC_RFID;//18
-  return rf;
+lerSensores();
+  //if(info != -1){    
+      //Serial.print(info);
+      //enviarParaUSB(info);//envia o long criado.
 }
 
 void enviarParaUSB(long info){
@@ -115,15 +98,17 @@ void enviarParaUSB(long info){
 
 //SIMULADOR
 
-long simularSensoresRF(){
+/*
+long redeslocar(){
   long rf = 10;
   long chuva = 34;       //porcentagem
   long umidade = 56;    //porcentagem
   long vibracao = 1;   //o valor 1 significa que está ocorrendo vibracao
+
   
-  long info = rf << DESLOC_RFID;//17
+  
   info = info | (vibracao << DESLOC_VIBRACAO);///16
   info = info | (umidade << DESLOC_UMIDADE);//8
   info = info | chuva;
   return info;
-}
+}*/
