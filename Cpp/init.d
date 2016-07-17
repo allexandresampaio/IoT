@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Daemon Name: winekeeperd
+# Daemon Name: minded
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DPATH=/home/allexandre/workspace/RepositorioGitHub/IoT/Cpp/Release/
 DESC="Daemon de leitura dos sensores para IoT"

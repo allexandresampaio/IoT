@@ -111,7 +111,7 @@ int lerSensores() {
 	//sensores++;
 
 	read(hPorta, (int*)&sensores, sizeof(sensores));
-	usleep(100*1000);
+	usleep(1000);
 
 	return sensores;
 }
