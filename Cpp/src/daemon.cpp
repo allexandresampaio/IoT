@@ -186,7 +186,7 @@ int main(int arg, char* argv[]) {
 				log << "Enviando sensores: " << sensores << endl;
 				//e o envio para o PIPE
 				enviarParaPipe(sensores);
-				sleep(3);
+				sleep(1);
 			} else {
 				log << "Problemas ao conectar com a porta."<<endl;
 			}
