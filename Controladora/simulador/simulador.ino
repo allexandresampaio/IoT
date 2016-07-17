@@ -1,27 +1,21 @@
-#include "RCSwitch.h"
 #include "Wire.h"
 #include "ADXL345.h"
-
-//Instancia o emissor e o receptor
-RCSwitch emissor = RCSwitch();
-RCSwitch receptor = RCSwitch();
 
 //Instancia o acelerometro
 ADXL345 acel = ADXL345();
 
 //Define os pinos dos sensores
-#define P_UMIDADE 0
-#define P_A_CHUVA 2  
-#define P_D_CHUVA 1
-
-#define RFID 10
+#define P_UMIDADE 2
+#define P_CHUVA 3  
 
 //Define os valores que serao usados no deslocamento
 #define DESLOC_VIBRACAO 16
 #define DESLOC_UMIDADE 8
 
+long info = -1;
+
 void setup() {
-  
+    
   //Configuracao do acelerometro para deteccao de vibracao
   acel.powerOn();
   //Define INATIVIDADE (repouso)
@@ -44,18 +38,16 @@ void setup() {
   acel.setInactivityThreshold(50);
   acel.setTimeInactivity(10);
 
-  //Configurando sensor de chuva
-  pinMode(P_D_CHUVA, INPUT);
-  pinMode(P_A_CHUVA, INPUT);
-
   //velocidade de leitura na porta serial
   Serial.begin(9600);
 }
 
 long lerSensores(){
-  long chuvaDigital = digitalRead(P_D_CHUVA);
-  long chuvaAnalogico = analogRead(P_A_CHUVA);
+  long chuva = analogRead(P_CHUVA);
+  chuva = map(chuva, 1023, 0, 0, 100);
   long umidade = analogRead(P_UMIDADE);
+  umidade = map(umidade, 1023, 0, 0, 100);
+
     
   //Para presenca o valor zero significa inatividade
   long vibracao = 0;
@@ -66,29 +58,22 @@ long lerSensores(){
   if(acel.triggered(interruptAcel, ADXL345_INT_ACTIVITY_BIT)){
     vibracao = 1;
   }
-delay(1000);
-Serial.println(" ");
-Serial.print("chuva = ");
-Serial.println(chuvaAnalogico);
-Serial.print("umidade = ");
-Serial.println(umidade);
-Serial.print("vibracao = ");
-Serial.print(vibracao);
-  
-  /*
-  long info = (vibracao << DESLOC_VIBRACAO);///16
+
+  delay(1000);
+  info = (vibracao << DESLOC_VIBRACAO);//16
   info = info | (umidade << DESLOC_UMIDADE);//8
-  info = info | chuvaAnalogico;
-  return info;*/
+  info = info | chuva;
+  return info;
 }
 
 void loop() {
 
-lerSensores();
-  //if(info != -1){    
-      //Serial.print(info);
-      //enviarParaUSB(info);//envia o long criado.
-}
+  lerSensores();
+    if(info != -1){    
+        //redeslocar(info);
+        enviarParaUSB(info);//envia o long criado.
+    }
+  }
 
 void enviarParaUSB(long info){
   char buff[sizeof(info)]={0};
@@ -96,19 +81,18 @@ void enviarParaUSB(long info){
   Serial.write((uint8_t*) buff, sizeof(info));
 }
 
+
 //SIMULADOR
-
-/*
-long redeslocar(){
-  long rf = 10;
-  long chuva = 34;       //porcentagem
-  long umidade = 56;    //porcentagem
-  long vibracao = 1;   //o valor 1 significa que está ocorrendo vibracao
-
+long redeslocar(long info){  
+  int umidade = (info & 65280) >> DESLOC_UMIDADE;
+  int vibracao = (info & 65536) >> DESLOC_VIBRACAO;
+  int chuva = (info & 255);
   
-  
-  info = info | (vibracao << DESLOC_VIBRACAO);///16
-  info = info | (umidade << DESLOC_UMIDADE);//8
-  info = info | chuva;
-  return info;
-}*/
+  Serial.println(" ");
+  Serial.print("chuva = ");
+  Serial.println(chuva);
+  Serial.print("umidade = ");
+  Serial.println(umidade);
+  Serial.print("vibracao = ");
+  Serial.println(vibracao);
+}

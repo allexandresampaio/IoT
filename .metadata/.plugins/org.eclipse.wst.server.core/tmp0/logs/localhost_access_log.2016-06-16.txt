@@ -1,0 +1,13 @@
+127.0.0.1 - - [16/Jun/2016:19:50:24 -0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [16/Jun/2016:19:50:26 -0300] "GET /winekeeper/ HTTP/1.1" 404 1016
+127.0.0.1 - - [16/Jun/2016:19:50:26 -0300] "GET /favicon.ico HTTP/1.1" 404 1016
+127.0.0.1 - - [16/Jun/2016:19:50:40 -0300] "GET /minde/v1/ws/sensores HTTP/1.1" 404 1034
+127.0.0.1 - - [16/Jun/2016:19:50:45 -0300] "GET /minde/v1/ws/sensores/st HTTP/1.1" 404 1040
+127.0.0.1 - - [16/Jun/2016:19:50:48 -0300] "GET /minde/v1/ws/sensores/status HTTP/1.1" 404 1048
+127.0.0.1 - - [16/Jun/2016:19:50:55 -0300] "GET /minde/v1/ws/sensores HTTP/1.1" 404 1034
+127.0.0.1 - - [16/Jun/2016:19:51:22 -0300] "GET /minde/v1/ws/sensores/umidade HTTP/1.1" 404 1050
+127.0.0.1 - - [16/Jun/2016:19:52:19 -0300] "GET /winekeeper/v1/sw/sensores HTTP/1.1" 200 19
+127.0.0.1 - - [16/Jun/2016:19:52:29 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 74
+127.0.0.1 - - [16/Jun/2016:19:52:44 -0300] "GET /winekeeper/v1/sw/sensores/chuva HTTP/1.1" 200 24
+127.0.0.1 - - [16/Jun/2016:19:52:49 -0300] "GET /winekeeper/v1/sw/sensores/vibracao HTTP/1.1" 200 11
+127.0.0.1 - - [16/Jun/2016:19:52:54 -0300] "GET /winekeeper/v1/sw/sensores/umidade HTTP/1.1" 200 12
