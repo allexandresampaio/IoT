@@ -11,13 +11,6 @@ import br.edu.ifba.iot.minde.sensoriamento.LeitorSensoriamento;
 public class Servico {
 
 	@GET
-	@Path("/id/")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String getId() {
-		return LeitorSensoriamento.getRFID() + "";
-	}
-
-	@GET
 	@Path("/sensores")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getSensores() {

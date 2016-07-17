@@ -23,7 +23,6 @@ public class LeitorSensoriamento implements Runnable {
 		
 		vib = (vib & 65536) >> DESLOCAMENTO_VIBRACAO;
 		
-		System.out.println(vib);
 		return vib;
 	}
 	
@@ -32,7 +31,6 @@ public class LeitorSensoriamento implements Runnable {
 		
 		umi = (umi & 65280) >> DESLOCAMENTO_UMIDADE;
 		
-		System.out.println(umi);
 		return umi;
 	}
 
@@ -41,7 +39,6 @@ public class LeitorSensoriamento implements Runnable {
 		
 		chuva = (chuva & 255);
 		
-		System.out.println(chuva);
 		return chuva;
 	}
 	
@@ -65,6 +62,7 @@ public class LeitorSensoriamento implements Runnable {
 		}else{
 			status = "Ambiente sem vibracoes.";
 		}
+		System.out.println(vibracao);
 		return status;
 	}
 
@@ -77,7 +75,7 @@ public class LeitorSensoriamento implements Runnable {
 //		}else{
 //			status = "Temperatura fora dos padroes recomendados! Ajuste.";
 //		}
-		
+		System.out.println(chuva);
 		return status;
 	}
 	
@@ -90,7 +88,7 @@ public class LeitorSensoriamento implements Runnable {
 //		}else{
 //			status = "Umidade fora dos padroes recomendados! Ajuste.";
 //		}
-		
+		System.out.println(umidade);
 		return status;
 	}
 	

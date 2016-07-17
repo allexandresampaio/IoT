@@ -1,0 +1,17 @@
+127.0.0.1 - - [17/Jul/2016:15:01:32 -0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [17/Jul/2016:15:01:48 -0300] "GET /winekeeper/v1/sw/sensores HTTP/1.1" 200 20
+127.0.0.1 - - [17/Jul/2016:15:01:48 -0300] "GET /favicon.ico HTTP/1.1" 404 1016
+127.0.0.1 - - [17/Jul/2016:15:01:52 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:02:01 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:02:02 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:02:10 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:02:11 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:02:11 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:03:04 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:09:27 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:09:27 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:09:28 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:09:28 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 72
+127.0.0.1 - - [17/Jul/2016:15:10:51 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 79
+127.0.0.1 - - [17/Jul/2016:15:10:56 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 79
+127.0.0.1 - - [17/Jul/2016:15:12:18 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 79
