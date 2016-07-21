@@ -1,4 +1,4 @@
 #Tomcat publish data
-#Sun Jul 17 15:12:07 BRT 2016
+#Wed Jul 20 22:08:29 BRT 2016
 org.eclipse.jst.jee.server\:/binary\:/home/allexandre/Documents/Install/tomcat/lib/tomcat-websocket.jar=WEB-INF/lib/tomcat-websocket.jar
 org.eclipse.jst.jee.server\:/binary\:/home/allexandre/Documents/Install/tomcat/lib/jasper.jar=WEB-INF/lib/jasper.jar
