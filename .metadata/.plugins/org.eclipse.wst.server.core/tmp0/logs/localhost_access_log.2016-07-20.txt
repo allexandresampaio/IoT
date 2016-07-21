@@ -18,3 +18,5 @@
 127.0.0.1 - - [20/Jul/2016:23:01:19 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 74
 127.0.0.1 - - [20/Jul/2016:23:05:33 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 74
 127.0.0.1 - - [20/Jul/2016:23:05:50 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 74
+127.0.0.1 - - [20/Jul/2016:23:21:55 -0300] "GET / HTTP/1.1" 404 994
+127.0.0.1 - - [20/Jul/2016:23:22:44 -0300] "GET /winekeeper/v1/sw/sensores/status HTTP/1.1" 200 74

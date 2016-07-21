@@ -1,3 +1,11 @@
 1469064590375	Rename local variable 'hora'
 1469064613954	Rename local variable 'data'
 1469064626015	Rename local variable 'local'
+1469105569405	Rename type 'Contecto'
+1469105590504	Rename compilation unit 'Contexto.java'
+1469105701149	Rename method 'getTemperatura'
+1469105744545	Rename local variable 'temperatura'
+1469105749590	Rename local variable 'stemperatura'
+1469107544713	Copy compilation unit
+1469107639848	Copy compilation units
+1469107652269	Delete element

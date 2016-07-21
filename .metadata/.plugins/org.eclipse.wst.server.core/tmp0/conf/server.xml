@@ -124,7 +124,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="/home/allexandre/workspace/RepositorioGitHub/IoT/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/home/allexandre/workspace/RepositorioGitHub/IoT/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ws-deslizamento" path="/winekeeper" reloadable="true" source="org.eclipse.jst.jee.server:ws-deslizamento"/></Host>
+      <Context docBase="/home/allexandre/workspace/RepositorioGitHub/IoT/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ROOT" path="" reloadable="false"/><Context docBase="/home/allexandre/workspace/RepositorioGitHub/IoT/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/ws-deslizamento" path="/minde" reloadable="true" source="org.eclipse.jst.jee.server:ws-deslizamento"/><Context docBase="/home/allexandre/workspace/RepositorioGitHub/IoT/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/wmobile.minde" path="/wmobile.minde" reloadable="true" source="org.eclipse.jst.jee.server:wmobile.minde"/></Host>
     </Engine>
   </Service>
 </Server>

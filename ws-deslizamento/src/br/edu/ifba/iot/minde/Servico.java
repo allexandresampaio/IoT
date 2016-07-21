@@ -21,21 +21,21 @@ public class Servico {
 	@Path("/sensores/vibracao")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getVibracao() {
-		return LeitorSensoriamento.getVibracao() + "";
+		return LeitorSensoriamento.getVibracao()+"";
 	}
 
 	@GET
 	@Path("/sensores/chuva")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getChuva() {
-		return LeitorSensoriamento.getStatusChuva() + "";
+		return LeitorSensoriamento.getChuva()+"";
 	}
 	
 	@GET
 	@Path("/sensores/umidade")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String getUmidade() {
-		return LeitorSensoriamento.getUmidade() + "";
+		return LeitorSensoriamento.getUmidade()+"";
 	}
 	
 	@GET

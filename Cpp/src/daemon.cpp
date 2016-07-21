@@ -29,7 +29,7 @@ using namespace std;
 bool continuar = true;
 int sensores = 0;
 //alterar para a porta em que o arduino estiver
-char* porta ="/dev/ttyACM0";
+char* porta ="/dev/ttyACM1";
 int hPorta=0;
 bool portainiciada = false;
 int resultado = EXIT_SUCCESS;

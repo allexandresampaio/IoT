@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+
+<f:view renderKitId="PRIMEFACES_MOBILE" />
+
+<h:head>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+	<style>
+	body {
+    background-color: #fff;
+	}
+	</style>
+</h:head>
+
+<h:body>
+
+	<pm:page id="sensores">
+		<div id="logo" style="background-color:#000">
+			<pm:header title="Minde V.1.0 - Se der tempo, colocar logo" />
+		</div>
+		
+		
+		<pm:content>
+			<h:form id="formSensores">
+			
+			<!-- MEDIDORES NA POSIÇÃO CENTRAL, QUE GERA MELHOR VIEW NO CELULAR -->		
+				<div id="medidores"
+				style="position: relative; margin-left: 15%;">
+				
+				<p:chart id="medidorChuva" type="metergauge" model="#{sensores.modeloMedidorChuva}"
+					style="width:80%; height:30%;"/>
+				<p:chart id="medidorUmidade" type="metergauge" model="#{sensores.modeloMedidorUmidade}"
+					style="width:80%;height:30%;" />
+				</div>
+
+			<!-- AVISOS E ALERTAS! VERIFICAR CLASSE SENSORES -->
+				<p:outputLabel id="avisoVibracao" value="#{sensores.acaoVibracao}"
+					style="display:none"></p:outputLabel>
+				<p:outputLabel id="avisoUmidade" value="#{sensores.acaoUmidade}"
+					style="display:none"></p:outputLabel>
+				<p:outputLabel id="avisoChuva" value="#{sensores.acaoChuva}"
+					style="display:none; float:left"></p:outputLabel>
+
+				<p:growl id="growl" showDetail="true" sticky="true"/>
+				<p:commandButton id="botao1" value="Save"
+					actionListener="#{sensores.criarAviso}" update="growl"
+					style="display:none" />
+				<p:commandButton id="botao2" value="Save"
+					actionListener="#{sensores.criarAviso}" update="growl"
+					style="display:none" />
+
+				<p:poll interval="3" listener="#{sensores.lerSensores}"
+					update="formSensores:medidorChuva, formSensores:medidorUmidade,
+			formSensores:avisoChuva, formSensores:avisoUmidade, 
+			formSensores:avisoVibracao, growl"></p:poll>
+
+
+				<script>
+					$(document).ready(function() {
+						$(function() {
+							$("[id$='botao1']").click();
+							$("[id$='botao2']").click();
+						});
+					});
+				</script>
+
+
+
+			</h:form>
+
+		</pm:content>
+
+	</pm:page>
+
+</h:body>
+
+</html>

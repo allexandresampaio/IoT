@@ -1,0 +1,5 @@
+package br.edu.ifba.iot.minde.client;
+
+public class Contexto {
+
+}
