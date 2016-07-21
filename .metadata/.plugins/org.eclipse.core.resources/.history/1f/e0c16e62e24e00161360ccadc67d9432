@@ -1,0 +1,16 @@
+package br.edu.ifba.iot.minde.email;
+
+public class SendMail {
+	
+		private static SendMail email = null;
+			
+		private SendMail(){
+			
+		}
+		
+		public static  SendMail getInstancia(){
+			if(email == null){
+				email = new SendMail();
+			}
+			return email;
+}

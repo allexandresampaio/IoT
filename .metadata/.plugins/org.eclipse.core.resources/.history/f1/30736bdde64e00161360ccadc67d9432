@@ -1,0 +1,30 @@
+package br.edu.ifba.iot.minde;
+
+import br.edu.ifba.iot.minde.email.SendMail;
+import br.edu.ifba.iot.minde.sensoriamento.LeitorSensoriamento;
+
+public class Executor {
+	
+	private static SendMail email = SendMail.getInstancia();		
+	
+	private static LeitorSensoriamento leitor = null;
+	private static Thread tLeitor = null;
+	@SuppressWarnings("static-access")
+	public static void main(String[] args) throws InterruptedException {
+		
+		leitor = new LeitorSensoriamento();
+		tLeitor = new Thread(leitor);
+		tLeitor.start();
+		
+		while (true) {			
+				int vibracao = leitor.getVibracao();
+				int umidade = leitor.getUmidade();
+				int chuva = leitor.getChuva();
+				
+				if(vibracao == 1 || umidade > 50 && chuva > 30){
+					email.sendMail(vibracao, chuva, umidade);
+				}
+				Thread.sleep(1000);
+		}
+	}
+}

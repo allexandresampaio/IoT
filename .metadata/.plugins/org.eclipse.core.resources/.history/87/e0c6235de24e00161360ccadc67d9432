@@ -1,0 +1,5 @@
+package br.edu.ifba.iot.minde.email;
+
+public class SendMail {
+
+}

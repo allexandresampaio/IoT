@@ -1,0 +1,33 @@
+package br.edu.ifba.iot.minde;
+
+public class Executor {
+	private static MyWebcam webcam = MyWebcam.getInstancia();
+	private static SendEmail email = SendEmail.getInstancia();		
+	
+	private static final String localSaida = "Saida A";
+	private static LeitorSensoriamento leitor = null;
+	private static Thread tLeitor = null;
+	@SuppressWarnings("static-access")
+	public static void main(String[] args) throws InterruptedException, ConnectionClosedException {
+		Conector conector = new Conector();
+		//webcam.executarWebcam();
+		
+		leitor = new LeitorSensoriamento();
+		tLeitor = new Thread(leitor);
+		tLeitor.start();
+		
+		while (true) {
+				Integer id = leitor.getSensores();
+				if(id != -1){
+					if(conector.consultaCarro(id)){
+						Image foto = webcam.tirarFoto();						
+						email.sendMail(getHora(), getData(), localSaida, foto);
+					}
+				}
+				System.out.println("id = " + id);						
+				Thread.sleep(1000);
+		}
+		
+	}
+
+}

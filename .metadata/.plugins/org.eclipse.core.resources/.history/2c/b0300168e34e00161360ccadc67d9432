@@ -1,0 +1,66 @@
+package br.edu.ifba.iot.minde.email;
+
+import java.util.Properties;
+
+import javax.mail*
+
+
+public class SendMail {
+
+	private static SendMail email = null;
+
+	private SendMail() {
+
+	}
+
+	public static SendMail getInstancia() {
+		if (email == null) {
+			email = new SendMail();
+		}
+		return email;
+	}
+
+	public static void sendMail(boolean vibracao, int chuva, int umidade) {
+		Properties props = new Properties();
+		/** Parâmetros de conexão com servidor Gmail */
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class",
+				"javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
+		//final Senha auth = new Senha();
+
+		Session session = Session.getDefaultInstance(props,
+				new javax.mail.Authenticator() {
+					protected PasswordAuthentication getPasswordAuthentication() {
+						return new PasswordAuthentication(auth.getEmail(), auth
+								.getSenha());
+					}
+				});
+
+		/** Ativa Debug para sessão */
+		session.setDebug(true);
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(auth.getEmail())); // Remetente
+
+			Address[] toUser = InternetAddress // Destinatário(s)
+					.parse("randlersi@gmail.com, msp.ramon@gmail.com");
+			message.setRecipients(Message.RecipientType.TO, toUser);
+			message.setSubject("[Roubo] Lascou!");// Assunto
+			message.setText("Mermão, você está sendo roubado!" + "\n Hora: "
+					+ vibracao + "\n Data: " + chuva + "\n Local: " + umidade
+					+ "\nFoto: " + foto);
+			/** Método para enviar a mensagem criada */
+			Transport.send(message);
+
+			System.out.println("Feito!!!");
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+	}
+}
